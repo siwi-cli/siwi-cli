@@ -1,0 +1,32 @@
+{
+  "name": "siwi-cli",
+  "version": "1.0.0",
+  "description": "siwi cli",
+  "main": "index.js",
+  "bin": {
+    "siwi-cli": "index.js"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siwi-cli/siwi-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siwi-cli/siwi-cli/issues"
+  },
+  "homepage": "https://github.com/siwi-cli/siwi-cli#readme",
+  "dependencies": {
+    "@types/node": "^12.0.2",
+    "commander": "^2.20.0",
+    "siwi-mkdirs": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
