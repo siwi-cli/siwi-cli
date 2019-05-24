@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/siwi-cli/siwi-cli.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["siwi-cli", "siwilizhao", "siwi"],
+  "author": "siwilizhao",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/siwi-cli/siwi-cli/issues"
