@@ -8,6 +8,7 @@ program
     .option('-s, --ssh-keygen', 'gen ssh key for git github')
     .option('-r, --rsa', 'gen rsa private.pem  public.pem')
     .option('-t, --time', 'time for siwi-cli')
+    .option('-o, --crypto', 'crypto for siwi-cli')
     .parse(process.argv)
 
 if (program.init) {
@@ -28,4 +29,10 @@ if (program.time) {
     const args = process.argv.slice(3)
     const time = require('./cli/time')
     time(args)
+}
+/* 和时间相关的操作 */
+if (program.crypto) {
+    const args = process.argv.slice(3)
+    const crypto = require('./cli/crypto')
+    crypto(args)
 }
