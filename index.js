@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+const fs = require('fs')
+const path = require('path')
+const SIWI_PATH = path.dirname(__filename)
 const program = require('commander')
 
 program
@@ -9,6 +12,8 @@ program
     .option('-r, --rsa', 'gen rsa private.pem  public.pem')
     .option('-t, --time', 'time for siwi-cli')
     .option('-o, --crypto', 'crypto for siwi-cli')
+    .option('-g, --gitignore', 'gen .gitignore for nodejs project by siwi-cli')
+    .option('-e, --dotenv', 'gen .env for nodejs project by siwi-cli')
     .parse(process.argv)
 
 if (program.init) {
