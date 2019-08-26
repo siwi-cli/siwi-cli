@@ -14,6 +14,7 @@ program
     .option('-o, --crypto', 'crypto for siwi-cli')
     .option('-g, --gitignore', 'gen .gitignore for nodejs project by siwi-cli')
     .option('-e, --dotenv', 'gen .env for nodejs project by siwi-cli')
+    .option('-f, --file', 'gen file for nodejs project by siwi-cli')
     .parse(process.argv)
 
 if (program.init) {
@@ -40,4 +41,11 @@ if (program.crypto) {
     const args = process.argv.slice(3)
     const crypto = require('./cli/crypto')
     crypto(args)
+}
+/* 和时间相关的操作 */
+if (program.file) {
+    const args = process.argv.slice(3)
+    const FileCli = require('./cli/file.cli')
+    const fileCli = new FileCli()
+    fileCli.config(args)
 }

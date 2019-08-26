@@ -27,7 +27,6 @@
   "dependencies": {
     "@types/node": "^12.0.2",
     "commander": "^2.20.0",
-    "cpr": "^3.0.1",
     "siwi-datehelper": "^2.0.2",
     "siwi-mkdirs": "^1.0.0"
   },
