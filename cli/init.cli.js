@@ -104,24 +104,23 @@ class InitCli {
      * @returns
      * @memberof InitCli
      */
-    async createPackageJson(content, saveName) {
+    async createPackageJson(data, saveName) {
         const [name, version,description,author] = data
-        const content =
-`
+        const content =`
 {
-    name: ${name},
-    version: ${version},
-    description: ${description},
-    main: 'index.js',
-    scripts: {
-        test: 'mocha test'
+    "name": "${name}",
+    "version": "${version}",
+    "description": "${description}",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha test"
     },
-    keywords: [],
-    author:  ${author},,
-    license: 'MIT'
+    "keywords": [],
+    "author":  "${author}",
+    "license": "MIT"
 }
-`
-        fs.writeFileSync(content, saveName)
+`;
+        fs.writeFileSync(saveName, content)
         return true
     }
 
@@ -138,13 +137,12 @@ class InitCli {
         const [name, description] = data
         const content =
 `
-
 # ${name}
 
 > ${description}
 
 `
-        fs.writeFileSync(content, saveName)
+        fs.writeFileSync(saveName, content)
         return true
     }
 
@@ -158,17 +156,17 @@ class InitCli {
      * @memberof InitCli
      */
     async createChangeLogMd(data, saveName) {
-        const [name, des] = data
+        const [name, version, description] = data
         const content =
 `
-# ${name} changelog
+# ${name} CHANGELOG
 
-## ${version}
+## v${version}
 
 - ${description}
 
 `
-        fs.writeFileSync(content, saveName)
+        fs.writeFileSync(saveName, content)
         return true
     }
 
