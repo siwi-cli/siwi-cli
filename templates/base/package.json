@@ -1,37 +1,15 @@
 {
-  "name": "siwi-cli",
+  "name": "name",
   "version": "1.0.0",
-  "description": "siwi cli",
+  "description": "",
   "main": "index.js",
-  "bin": {
-    "siwi-cli": "index.js"
+  "directories": {
+    "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test"
+    "test": "mocha test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/siwi-cli/siwi-cli.git"
-  },
-  "keywords": [
-    "siwi-cli",
-    "siwilizhao",
-    "siwi"
-  ],
-  "author": "siwilizhao",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/siwi-cli/siwi-cli/issues"
-  },
-  "homepage": "https://github.com/siwi-cli/siwi-cli#readme",
-  "dependencies": {
-    "@types/node": "^12.0.2",
-    "commander": "^2.20.0",
-    "siwi-datehelper": "^2.0.2",
-    "siwi-mkdirs": "^1.0.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4"
-  }
+  "keywords": [],
+  "author": "siwilizhao@gmail.com",
+  "license": "MIT"
 }

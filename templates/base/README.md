@@ -1,3 +1,0 @@
-# siwi-cli
-
-siwi cli
