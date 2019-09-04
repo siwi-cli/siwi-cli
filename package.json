@@ -26,6 +26,7 @@
   "homepage": "https://github.com/siwi-cli/siwi-cli#readme",
   "dependencies": {
     "@types/node": "^12.0.2",
+    "bluebird": "^3.5.5",
     "commander": "^2.20.0",
     "cpr": "^3.0.1",
     "debug": "^4.1.1",
