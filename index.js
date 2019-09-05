@@ -13,6 +13,7 @@ const program = require('commander');
         .option('-g, --gitignore', 'gen .gitignore for nodejs project by siwi-cli')
         .option('-e, --dotenv', 'gen .env for nodejs project by siwi-cli')
         .option('-f, --file', 'gen file for nodejs project by siwi-cli')
+        .option('-l, --list', 'list templates for siwi-cli')
         .parse(process.argv)
 
     if (program.init) {
@@ -47,5 +48,10 @@ const program = require('commander');
         const FileCli = require('./cli/file.cli')
         const fileCli = new FileCli()
         fileCli.config(args)
+    }
+    if (program.list) {
+        const ListCli = require('./cli/list.cli')
+        const listCli = new ListCli()
+        await listCli.list()
     }
 })();
