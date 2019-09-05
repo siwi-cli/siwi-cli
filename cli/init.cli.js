@@ -115,7 +115,7 @@ class InitCli {
     "scripts": {
         "test": "mocha test"
     },
-    "keywords": [],
+    "keywords": ["${name}"],
     "author":  "${author}",
     "license": "MIT"
 }
