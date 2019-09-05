@@ -42,7 +42,7 @@ const program = require('commander');
         const crypto = require('./cli/crypto')
         crypto(args)
     }
-    /* 和时间相关的操作 */
+    /* 和文件相关的操作 */
     if (program.file) {
         const args = process.argv.slice(3)
         const FileCli = require('./cli/file.cli')
