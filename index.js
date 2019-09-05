@@ -16,6 +16,7 @@ const program = require('commander');
         .option('-l, --list', 'list templates for siwi-cli')
         .parse(process.argv)
 
+    /* 创建项目 */
     if (program.init) {
         const [templateName, saveName] = process.argv.slice(3)
         if (!!templateName) {
@@ -36,7 +37,7 @@ const program = require('commander');
         const time = require('./cli/time')
         time(args)
     }
-    /* 和时间相关的操作 */
+    /* 和加密相关的操作 */
     if (program.crypto) {
         const args = process.argv.slice(3)
         const crypto = require('./cli/crypto')
