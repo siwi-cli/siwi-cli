@@ -63,6 +63,8 @@ class InitCli {
             await this.createReadMeMd([name, description], path.resolve(to, 'README.md'))
             /* create CHANGELOG.md */
             await this.createChangeLogMd([name, version, description], path.resolve(to, 'CHANGELOG.md'))
+
+            await this.createVuepressConfig([name, description], path.resolve(to,'docs','.vuepress', 'config.js'))
             /* install dependencies */
             if (!!dependencies[templateName]) {
                 await this.installDependencies(cmd, dependencies[templateName], to)
@@ -117,7 +119,9 @@ class InitCli {
     "description": "${description}",
     "main": "index.js",
     "scripts": {
-        "test": "mocha test"
+        "test": "./node_modules/mocha/bin/mocha test",
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
     },
     "keywords": ["${name}"],
     "author":  "${author}",
@@ -171,6 +175,48 @@ class InitCli {
         fs.writeFileSync(saveName, content)
         return true
     }
+
+    /**
+     * create vuepress config.js
+     *
+     * @author [siwilizhao<siwilizhao@gmail.com>]
+     * @param {*} data
+     * @param {*} saveName
+     * @returns Boolean
+     * @memberof InitCli
+     */
+    async createVuepressConfig(data, saveName) {
+    
+        const [name, description] = data
+        const content = `
+const path = require('path')
+module.exports = {
+    title: "${name}",
+    description: "${description}",
+    themeConfig: {
+        nav: [
+            { text: 'Home', link: '/' },
+            { text: 'Github', link: 'https://github.com/siwi-cli' },
+        ],
+        lastUpdated: 'Last Updated', // string | boolean
+        sidebar: {
+            '/siwi-cli/': [
+                '',
+                'install'
+            ]
+        }
+    },
+    configureWebpack: {
+        resolve: {
+            alias: {
+                '@images':  path.resolve('public', 'images')
+            }
+        }
+    }
+}`
+            fs.writeFileSync(saveName, content)
+            return true
+        }
 
     /**
      * installDependencies
