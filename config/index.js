@@ -52,9 +52,11 @@ module.exports = {
         }
     },
     dependencies: {
-        base: ['sequelize', 'mysql2', 'sqlite', 'mongoose', 'amqplib', 'ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs']
+        base: ['sequelize', 'mysql2', 'sqlite', 'mongoose', 'amqplib', 'ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs'],
+        pkg: [],
     },
     devDependencies: {
-        base: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize']
+        base: ['sequelize', 'mysql2', 'sqlite', 'mongoose', 'amqplib', 'ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs'],
+        pkg: ['mocha', 'chai', '@types/node'],
     }
 }

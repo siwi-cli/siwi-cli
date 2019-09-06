@@ -64,9 +64,13 @@ class InitCli {
             /* create CHANGELOG.md */
             await this.createChangeLogMd([name, version, description], path.resolve(to, 'CHANGELOG.md'))
             /* install dependencies */
-            await this.installDependencies(cmd, dependencies[templateName], to)
+            if (!!dependencies[templateName]) {
+                await this.installDependencies(cmd, dependencies[templateName], to)
+            }
             /* install devDependencies */
-            await this.installDevDependencies(cmd, devDependencies[templateName], to)
+            if (!!devDependencies[templateName]) {
+                await this.installDevDependencies(cmd, devDependencies[templateName], to)
+            }
         } catch (error) {
             console.trace(error)
         }
@@ -140,7 +144,6 @@ class InitCli {
 # ${name}
 
 > ${description}
-
 `
         fs.writeFileSync(saveName, content)
         return true
@@ -161,10 +164,9 @@ class InitCli {
 `
 # ${name} CHANGELOG
 
-## v${version}
+## Version ${version}
 
 - ${description}
-
 `
         fs.writeFileSync(saveName, content)
         return true
