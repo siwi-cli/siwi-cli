@@ -3,7 +3,7 @@
  * @email [siwilizhao@gmail.com]
  * @create date 2019-05-23 16:12:35
  * @modify date 2019-05-23 16:12:35
- * @desc [init.js]
+ * @desc [init.cli.js]
  */
 
 const os = require('os')
