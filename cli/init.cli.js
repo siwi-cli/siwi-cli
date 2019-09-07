@@ -63,8 +63,10 @@ class InitCli {
             await this.createReadMeMd([name, description], path.resolve(to, 'README.md'))
             /* create CHANGELOG.md */
             await this.createChangeLogMd([name, version, description], path.resolve(to, 'CHANGELOG.md'))
-
-            await this.createVuepressConfig([name, description], path.resolve(to,'docs','.vuepress', 'config.js'))
+            /* create config.js for docs */
+            await this.createVuepressConfig([name, description], path.resolve(to, 'docs', '.vuepress', 'config.js'))
+            /* create README.md for docs */
+            await this.createVuepressConfig([name, description], path.resolve(to, 'docs', 'README.md'))
             /* install dependencies */
             if (!!dependencies[templateName]) {
                 await this.installDependencies(cmd, dependencies[templateName], to)
@@ -111,8 +113,8 @@ class InitCli {
      * @memberof InitCli
      */
     async createPackageJson(data, saveName) {
-        const [name, version,description,author] = data
-        const content =`
+        const [name, version, description, author] = data
+        const content = `
 {
     "name": "${name}",
     "version": "${version}",
@@ -144,7 +146,7 @@ class InitCli {
     async createReadMeMd(data, saveName) {
         const [name, description] = data
         const content =
-`
+            `
 # ${name}
 
 > ${description}
@@ -165,7 +167,7 @@ class InitCli {
     async createChangeLogMd(data, saveName) {
         const [name, version, description] = data
         const content =
-`
+            `
 # ${name} CHANGELOG
 
 ## Version ${version}
@@ -186,7 +188,7 @@ class InitCli {
      * @memberof InitCli
      */
     async createVuepressConfig(data, saveName) {
-    
+
         const [name, description] = data
         const content = `
 const path = require('path')
@@ -214,9 +216,38 @@ module.exports = {
         }
     }
 }`
-            fs.writeFileSync(saveName, content)
-            return true
-        }
+        fs.writeFileSync(saveName, content)
+        return true
+    }
+
+    /**
+     * createDocsReadMeMd
+     *
+     * @author [siwilizhao<siwilizhao@gmail.com>]
+     * @param {*} data
+     * @param {*} saveName
+     * @returns
+     * @memberof InitCli
+     */
+    async createDocsReadMeMd(data, saveName) {
+        const [name, description] = data
+        const content = `
+---
+home: true
+heroImage: /images/siwi.png
+
+footer: MIT Licensed | Copyright © 2018-present siwilizhao
+---
+# ${name}
+> ${description}
+
+::: tip
+This is a tip
+:::
+`
+        fs.writeFileSync(saveName, content)
+        return true
+    }
 
     /**
      * installDependencies
