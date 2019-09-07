@@ -61,13 +61,19 @@ module.exports = {
     dependencies: {
         base: ['sequelize', 'mysql2', 'sqlite', 'mongoose', 'amqplib', 'ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs'],
         pkg: [],
-        spider: ['ioredis', 'got', 'cheerio', 'iconv-lite','siwi-sleep', 'siwi-mkdirs'],
+        spider: ['ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs'],
         docs: [],
+        web: ['koa', 'koa-logger', 'koa-router', 'koa-bodyparser', 'koa-static', 'koa2-cors', 'koa-session', 'got', 'pug', 'ejs', 'ioredis', 'sequelize', 'mongoose'],
+        api: ['koa', 'koa-logger', 'koa-router', 'koa-bodyparser', 'koa-static', 'koa2-cors', 'koa-session', 'got', 'ioredis', 'sequelize', 'mongoose', 'mysql2', 'sqlite'],
+        gateway: ['koa', 'koa-logger', 'koa-router', 'koa-bodyparser', 'koa-static', 'koa2-cors', 'koa-session', 'got', 'ioredis', 'sequelize', 'mongoose', 'mysql2', 'sqlite'],
     },
     devDependencies: {
         base: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize', 'vuepress'],
         pkg: ['mocha', 'chai', '@types/node', 'vuepress'],
         spider: ['mocha', 'chai', '@types/node', 'vuepress'],
         docs: ['vuepress'],
+        web: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize', 'vuepress'],
+        api: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize', 'vuepress'],
+        gateway: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize', 'vuepress'],
     }
 }
