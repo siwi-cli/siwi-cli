@@ -1,3 +1,10 @@
+/**
+ * @author [siwilizhao]
+ * @email [siwilizhao@gmail.com]
+ * @create date 2019-09-07 12:37:44
+ * @modify date 2019-09-07 12:37:44
+ * @desc [config for siwi-cli]
+ */
 module.exports = {
     templates: {
         'web': {
