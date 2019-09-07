@@ -39,10 +39,10 @@ class InitCli {
         const version = await this.question('Version for the project :', '0.0.1')
         const description = await this.question('Description for the project: ', `A project create by siwi-cli using template: ${templateName}`)
         const author = await this.question('Author for the project:', 'siwilizhao@gmail.com')
-        const install =  await this.question('Do you need install dependencies ? (y/n default n):', 'n')
+        const install = await this.question('Do you need install dependencies ? (y/n default n):', 'n')
         let cmd = 'yarn'
-        
-        if (install.toLowerCase() == 'y' ) {
+
+        if (install.toLowerCase() == 'y') {
             cmd = await this.question('Use npm or yarn ? (npm/yarn default yarn) :', 'yarn')
         }
 
@@ -68,10 +68,14 @@ class InitCli {
             await this.createReadMeMd([name, description], path.resolve(to, 'README.md'))
             /* create CHANGELOG.md */
             await this.createChangeLogMd([name, version, description], path.resolve(to, 'CHANGELOG.md'))
-            /* create config.js for docs */
-            await this.createVuepressConfig([name, description], path.resolve(to, 'docs', '.vuepress', 'config.js'))
-            /* create README.md for docs */
-            await this.createVuepressConfig([name, description], path.resolve(to, 'docs', 'README.md'))
+
+            if (fs.existsSync(path.resolve(to, 'docs'))) {
+                /* create config.js for docs */
+                await this.createVuepressConfig([name, description], path.resolve(to, 'docs', '.vuepress', 'config.js'))
+                /* create README.md for docs */
+                await this.createVuepressConfig([name, description], path.resolve(to, 'docs', 'README.md'))
+            }
+
 
             /* install dependencies */
             if (install.toLowerCase() == 'y' && !!dependencies[templateName]) {
