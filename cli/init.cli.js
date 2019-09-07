@@ -73,7 +73,7 @@ class InitCli {
                 /* create config.js for docs */
                 await this.createVuepressConfig([name, description], path.resolve(to, 'docs', '.vuepress', 'config.js'))
                 /* create README.md for docs */
-                await this.createVuepressConfig([name, description], path.resolve(to, 'docs', 'README.md'))
+                await this.createDocsReadMeMd([name, description], path.resolve(to, 'docs', 'README.md'))
             }
 
 
