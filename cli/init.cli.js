@@ -41,7 +41,6 @@ class InitCli {
         const author = await this.question('Author for the project:', 'siwilizhao@gmail.com')
         const install = await this.question('Do you need install dependencies ? (y/n default n):', 'n')
         let cmd = 'yarn'
-        console.log(install);
         
         if (install.toLowerCase() == 'y') {
             cmd = await this.question('Use npm or yarn ? (npm/yarn default yarn) :', 'yarn')
