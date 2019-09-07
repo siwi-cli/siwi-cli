@@ -61,9 +61,11 @@ module.exports = {
     dependencies: {
         base: ['sequelize', 'mysql2', 'sqlite', 'mongoose', 'amqplib', 'ioredis', 'got', 'cheerio', 'iconv-lite', 'siwi-sleep', 'siwi-mkdirs'],
         pkg: [],
+        spider: ['ioredis', 'got', 'cheerio', 'iconv-lite','siwi-sleep', 'siwi-mkdirs'],
     },
     devDependencies: {
         base: ['mocha', 'chai', '@types/node', '@types/mongoose', '@types/sequelize', 'vuepress'],
         pkg: ['mocha', 'chai', '@types/node', 'vuepress'],
+        spider: ['mocha', 'chai', '@types/node', 'vuepress'],
     }
 }
