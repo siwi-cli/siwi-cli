@@ -39,7 +39,12 @@ class InitCli {
         const version = await this.question('Version for the project :', '0.0.1')
         const description = await this.question('Description for the project: ', `A project create by siwi-cli using template: ${templateName}`)
         const author = await this.question('Author for the project:', 'siwilizhao@gmail.com')
-        let cmd = await this.question('use npm or yarn ? (npm/yarn default yarn) :', 'yarn')
+        const install =  await this.question('Do you need install dependencies ? (y/n default n):', 'n')
+        let cmd = 'yarn'
+        
+        if (install.toLowerCase() == 'y' ) {
+            cmd = await this.question('Use npm or yarn ? (npm/yarn default yarn) :', 'yarn')
+        }
 
         /* 兼容windows */
         if (os.platform() == 'win32') {
@@ -67,13 +72,21 @@ class InitCli {
             await this.createVuepressConfig([name, description], path.resolve(to, 'docs', '.vuepress', 'config.js'))
             /* create README.md for docs */
             await this.createVuepressConfig([name, description], path.resolve(to, 'docs', 'README.md'))
+
             /* install dependencies */
-            if (!!dependencies[templateName]) {
+            if (install.toLowerCase() == 'y' && !!dependencies[templateName]) {
                 await this.installDependencies(cmd, dependencies[templateName], to)
             }
             /* install devDependencies */
-            if (!!devDependencies[templateName]) {
+            if (install.toLowerCase() == 'y' && !!devDependencies[templateName]) {
                 await this.installDevDependencies(cmd, devDependencies[templateName], to)
+            }
+
+            if (install.toLowerCase() == 'n') {
+                console.log(`Run the following command`)
+                console.log(`cd ${saveName}`)
+                console.log(`yarn add ${dependencies[templateName].join(' ')}`)
+                console.log(`yarn add ${devDependencies[templateName].join(' ')} -D`)
             }
         } catch (error) {
             console.trace(error)
