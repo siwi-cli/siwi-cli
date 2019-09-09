@@ -353,7 +353,7 @@ This is a tip
                 }
             })
         }).catch(err => {
-            console.trace(err)
+            // console.trace(err)
             return defaultAnswer
         })
         rl.close()
