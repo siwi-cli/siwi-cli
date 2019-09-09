@@ -5,7 +5,7 @@ const program = require('commander');
     program
         .version(require('./package.json').version, '-v --version')
         .option('-i, --init', 'init a nodejs project use siwi-template')
-        .option('-c, --create', 'create file by siwi-cli')
+        .option('-c, --custom', 'gen .siwi dir for custom siwi-cli')
         .option('-s, --ssh-keygen', 'gen ssh key for git github')
         .option('-r, --rsa', 'gen rsa private.pem  public.pem')
         .option('-t, --time', 'time for siwi-cli')
@@ -50,9 +50,16 @@ const program = require('commander');
         const fileCli = new FileCli()
         fileCli.config(args)
     }
+
     if (program.list) {
         const ListCli = require('./cli/list.cli')
         const listCli = new ListCli()
         await listCli.list()
+    }
+
+    if (program.custom) {
+        const CustomCli = require('./cli/custom.cli')
+        const customCli = new CustomCli()
+        await customCli.init()
     }
 })();
