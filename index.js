@@ -37,12 +37,14 @@ const program = require('commander');
         const time = require('./cli/time')
         time(args)
     }
+
     /* 和加密相关的操作 */
     if (program.crypto) {
         const args = process.argv.slice(3)
         const crypto = require('./cli/crypto')
         crypto(args)
     }
+
     /* 和文件相关的操作 */
     if (program.file) {
         const args = process.argv.slice(3)
@@ -51,12 +53,14 @@ const program = require('commander');
         fileCli.config(args)
     }
 
+    /* templates 列表 */ 
     if (program.list) {
         const ListCli = require('./cli/list.cli')
         const listCli = new ListCli()
         await listCli.list()
     }
-
+    
+    /* 自定义*/ 
     if (program.custom) {
         const CustomCli = require('./cli/custom.cli')
         const customCli = new CustomCli()
