@@ -196,7 +196,7 @@ class InitCli {
     }
 
     /**
-     * create vuepress config.js
+     * create viewless config.js
      *
      * @author [siwilizhao<siwilizhao@gmail.com>]
      * @param {*} data
@@ -293,7 +293,9 @@ This is a tip
         });
 
         ls.on('close', (code) => {
-            console.log(`子进程退出码：${code}`);
+            if (code != '0') {
+                console.log(`子进程退出码：${code}`);
+            }
         });
     }
     /**
@@ -322,7 +324,9 @@ This is a tip
         });
 
         ls.on('close', (code) => {
-            console.log(`子进程退出码：${code}`);
+            if (code != '0') {
+                console.log(`子进程退出码：${code}`);
+            }
         });
     }
 
@@ -349,6 +353,7 @@ This is a tip
                 }
             })
         }).catch(err => {
+            console.trace(err)
             return defaultAnswer
         })
         rl.close()
