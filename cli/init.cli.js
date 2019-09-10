@@ -13,18 +13,28 @@ const path = require('path')
 const debug = require('debug')
 const config = require('../config')
 const readline = require('readline')
-const Promise = require('bluebird')
 const {
     spawn
 } = require('child_process')
 const CLI_PATH = path.dirname(__filename)
 const SIWI_PATH = path.dirname(CLI_PATH)
 const TEMPLATE_PATH = path.resolve(SIWI_PATH, 'templates')
+const homedir = os.homedir()
+const DOT_SIWI_PATH = path.resolve(homedir, '.siwi')
+const CUSTOM_TEMPLATES_PATH = path.resolve(DOT_SIWI_PATH, 'templates')
+const CUSTOM_CONFIG_PATH = path.resolve(DOT_SIWI_PATH, 'config')
 
 class InitCli {
     async init(templateName, saveName) {
-        const from = path.resolve(TEMPLATE_PATH, templateName)
-        const to = path.resolve(process.cwd(), saveName ? saveName : templateName)
+        let custom = true
+        saveName = saveName ? saveName: templateName
+        const customConfig = require(CUSTOM_CONFIG_PATH)
+        let from = path.resolve(CUSTOM_TEMPLATES_PATH, templateName)
+        if (!fs.existsSync(from)) {
+            from = path.resolve(TEMPLATE_PATH, templateName)
+            custom = false
+        }
+        const to = path.resolve(process.cwd(), saveName)        
         if (!fs.existsSync(from)) {
             debug.log(`not support template ${templateName}`)
             return false
@@ -32,8 +42,7 @@ class InitCli {
         const {
             dependencies,
             devDependencies
-        } = config
-
+        } = custom == false ? config : customConfig
 
         const name = await this.question('Name for the project :', saveName)
         const version = await this.question('Version for the project :', '0.0.1')
