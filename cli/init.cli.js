@@ -11,8 +11,10 @@ const fs = require('fs')
 const cpr = require('cpr')
 const path = require('path')
 const debug = require('debug')
+const chalk = require('chalk')
 const config = require('../config')
 const readline = require('readline')
+
 const {
     spawn
 } = require('child_process')
@@ -96,10 +98,10 @@ class InitCli {
             }
 
             if (install.toLowerCase() == 'n') {
-                console.log(`Run the following command`)
-                console.log(`cd ${saveName}`)
-                console.log(`yarn add ${dependencies[templateName].join(' ')}`)
-                console.log(`yarn add ${devDependencies[templateName].join(' ')} -D`)
+                console.log(chalk.red(`Run the following command:`))
+                console.log(chalk.blue(`cd ${saveName}`))
+                console.log(chalk.blue(`yarn add ${dependencies[templateName].join(' ')}`))
+                console.log(chalk.blue(`yarn add ${devDependencies[templateName].join(' ')} -D`))
             }
         } catch (error) {
             console.trace(error)

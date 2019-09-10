@@ -18,9 +18,7 @@ class ListCli {
         if (fs.existsSync(CUSTOM_CONFIG_PATH)) {
             const customConfig = require(CUSTOM_CONFIG_PATH)
             list = Object.assign(list, customConfig.templates || {})
-            console.log(list);
         }
-
         console.table(list)
     }
 }
